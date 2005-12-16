@@ -1,0 +1,4 @@
+- Different wizard for form/table/bullet list usage
+- RTE content? / Disable for RTE
+- Translate the few labels from english to LL.
+- Support more than UTF-8 for non-LR content.
