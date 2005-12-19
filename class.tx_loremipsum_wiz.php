@@ -84,7 +84,6 @@ class tx_loremipsum_wiz {
 	 * @return	string		HTML for the wizard.
 	 */
 	function main($PA,$pObj)	{
-		#debug($PA);
 
 			// Detect proper LR file source:
 		$this->setLRfile($PA);
@@ -100,6 +99,7 @@ class tx_loremipsum_wiz {
 			case 'paragraph':
 			case 'loremipsum':
 				$onclick = $this->getHeaderTitleJS(
+								"document.".$PA['formName']."['".$PA['itemName']."']",
 								"document.".$PA['formName']."['".$PA['itemName']."'].value",
 								$PA['params']['type'],
 								$PA['params']['endSequence'],
@@ -155,6 +155,7 @@ class tx_loremipsum_wiz {
 	 * Create rotating Lipsum text for JS variable
 	 * Can be used by other non TCEform fields as well.
 	 *
+	 * @param	string		Reference to the form field
 	 * @param	string		JavaScript variable name, eg. a form field value property reference.
 	 * @param	string		Type = key from $this->lindex array
 	 * @param	string		List of character numbers to end sequence with.
@@ -162,7 +163,7 @@ class tx_loremipsum_wiz {
 	 * @param	integer		Number of texts to cycle through
 	 * @return	string		JavaScript applying a lipsum string to input javascript variable.
 	 */
-	function getHeaderTitleJS($varName, $type, $endSequence='', $add=FALSE, $count=10)	{
+	function getHeaderTitleJS($varElement, $varName, $type, $endSequence='', $add=FALSE, $count=10)	{
 
 			// Load data:
 		$this->loadLoremIpsumArray();
@@ -205,7 +206,19 @@ class tx_loremipsum_wiz {
 			$code.="
 				".$varName.($add?'+':'')."=lipsum_temp_strings[lipsum_temp_pointer];
 			";
-
+				
+				// Hook for insertion into RTE
+			if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lorem_ipsum']['RTE_insert']) {
+				$_params = array (
+					'element' => &$varElement,
+				); 
+				
+				foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lorem_ipsum']['RTE_insert'] as $_funcRef)    {
+					if ($_funcRef) {
+						$code .= t3lib_div::callUserFunction($_funcRef,$_params,$this);
+					}
+				}
+			}
 				// Return:
 			return $code;
 		}
@@ -282,7 +295,6 @@ class tx_loremipsum_wiz {
 		} else {
 			$this->lindex = $T3_VAR['ext']['lorem_ipsum'][$this->LRfile]['lindex'];
 		}
-#debug($this->lindex);
 	}
 
 	/**
@@ -307,7 +319,6 @@ class tx_loremipsum_wiz {
 	}
 }
 
-// Include extension?
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/lorem_ipsum/class.tx_loremipsum_wiz.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/lorem_ipsum/class.tx_loremipsum_wiz.php']);
 }

@@ -1,0 +1,3 @@
+2005-12-19  Stanislas Rolland  <stanislas.rolland(arobas)fructifor.ca>
+	* Add RTE_insert hook for insertion of text into RTE editing area.
+
