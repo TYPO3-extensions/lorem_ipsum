@@ -99,12 +99,12 @@ class tx_loremipsum_wiz {
 			case 'paragraph':
 			case 'loremipsum':
 				$onclick = $this->getHeaderTitleJS(
-								"document.".$PA['formName']."['".$PA['itemName']."']",
 								"document.".$PA['formName']."['".$PA['itemName']."'].value",
 								$PA['params']['type'],
 								$PA['params']['endSequence'],
 								$PA['params']['add'],
-								t3lib_div::intInRange($PA['params']['count'],2,100,10)
+								t3lib_div::intInRange($PA['params']['count'],2,100,10),
+								"document.".$PA['formName']."['".$PA['itemName']."']"
 							).';'.
 							implode('',$PA['fieldChangeFunc']).		// Necessary to tell TCEforms that the value is updated.
 							'return false;';
@@ -155,15 +155,15 @@ class tx_loremipsum_wiz {
 	 * Create rotating Lipsum text for JS variable
 	 * Can be used by other non TCEform fields as well.
 	 *
-	 * @param	string		Reference to the form field
 	 * @param	string		JavaScript variable name, eg. a form field value property reference.
 	 * @param	string		Type = key from $this->lindex array
 	 * @param	string		List of character numbers to end sequence with.
 	 * @param	integer		Number of options to cycle through.
 	 * @param	integer		Number of texts to cycle through
+	 * @param	string		Reference to the form field
 	 * @return	string		JavaScript applying a lipsum string to input javascript variable.
 	 */
-	function getHeaderTitleJS($varElement, $varName, $type, $endSequence='', $add=FALSE, $count=10)	{
+	function getHeaderTitleJS($varName, $type, $endSequence='', $add=FALSE, $count=10, $varElement='')	{
 
 			// Load data:
 		$this->loadLoremIpsumArray();
@@ -208,7 +208,7 @@ class tx_loremipsum_wiz {
 			";
 				
 				// Hook for insertion into RTE
-			if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lorem_ipsum']['RTE_insert']) {
+			if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lorem_ipsum']['RTE_insert'] && $varElement) {
 				$_params = array (
 					'element' => &$varElement,
 				); 
