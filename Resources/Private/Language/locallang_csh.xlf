@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-05-26T00:07:56Z" product-name="lorem_ipsum">
+		<header/>
+		<body>
+			<trans-unit id=".alttitle" xml:space="preserve">
+				<source>Lorem Ipsum</source>
+			</trans-unit>
+			<trans-unit id=".description" xml:space="preserve">
+				<source>&quot;Lorem Ipsum&quot; is an extension that creates industry standard dummy text for pages and content elements in TYPO3. Usually it is available as a wizard icon next to form fields.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-11-05T19:34:31Z" product-name="lorem_impsum">
+		<header/>
+		<body>
+			<trans-unit id="selectDummyContentType" xml:space="preserve">
+				<source>Select Lorem Ipsum content type:</source>
+			</trans-unit>
+			<trans-unit id="traditionalLoremIpsum" xml:space="preserve">
+				<source>Traditional Lorem Ipsum</source>
+			</trans-unit>
+			<trans-unit id="russianSampleText" xml:space="preserve">
+				<source>Russian sample text</source>
+			</trans-unit>
+			<trans-unit id="chineseSampleText" xml:space="preserve">
+				<source>Chinese sample text</source>
+			</trans-unit>
+			<trans-unit id="insertDummyContent" xml:space="preserve">
+				<source>Insert dummy content</source>
+			</trans-unit>
+			<trans-unit id="clickDummyImage" xml:space="preserve">
+				<source>Click a dummy image to select it:</source>
+			</trans-unit>
+			<trans-unit id="copyrightNotice" xml:space="preserve">
+				<source>All images are copyright &#169; Kasper Sk&#229;rh&#248;j 2001-2013 and licensed in these resolutions under Open Content License.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

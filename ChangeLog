@@ -1,3 +1,14 @@
-2005-12-19  Stanislas Rolland  <stanislas.rolland(arobas)fructifor.ca>
+2013-05-26  Stanislas Rolland  <typo3(arobas)sjbr.ca>
+
+	* Adapt to TYPO3 6.0+ namespacing, directory structure, deprecated methods, etc.
+	* Drop image wizard (no wizard on inline type used by FAL)
+	* Configure wizard on file reference title, alternate text and description
+	* Add Chinese sample text
+	* Convert csh from xml to xliff
+	* Add missing localization of labels
+	* Require TYPO3 6.0.0.
+	* Resolves #48547: Cleanup and adapt to TYPO3 6.0
+
+2005-12-19  Stanislas Rolland  <typo3(arobas)sjbr.ca>
 
 	* Add RTE_insert hook for insertion of text into RTE editing area.
