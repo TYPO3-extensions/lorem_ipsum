@@ -8,7 +8,12 @@ if (TYPO3_MODE == 'BE') {
 	// Create wizard configuration
 	$wizConfig = array(
 		'type' => 'userFunc',
-		'userFunc' => 'SJBR\LoremIpsum\Controller\Wizard\LoremIpsumController->main',
+		'userFunc' => 'SJBR\\LoremIpsum\\Controller\\Wizard\\LoremIpsumController->main',
+		'title' => 'lorem_ipsum',
+		'icon' => 'wizard_table.gif',
+		'module' => array(
+			'name' => 'wizard_table'
+		),
 		'params' => array()
 	);
 

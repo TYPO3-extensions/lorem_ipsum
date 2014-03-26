@@ -36,7 +36,7 @@ $EM_CONF[$_EXTKEY] = Array (
 	array (
 		'depends' => 
 		array (
-			'typo3' => '6.0.0-6.1.99',
+			'typo3' => '6.2.0-6.2.99',
 		),
 		'conflicts' => 
 		array (
@@ -44,7 +44,6 @@ $EM_CONF[$_EXTKEY] = Array (
 		'suggests' => 
 		array (
 		),
-	),
-	'_md5_values_when_last_written' => '',
+	)
 );
 ?>

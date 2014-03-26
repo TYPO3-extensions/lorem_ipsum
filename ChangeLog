@@ -1,3 +1,10 @@
+2014-03-26  Stanislas Rolland  <typo3(arobas)sjbr.ca>
+
+	* Enable in TYPO3 6.2
+	* Require TYPO3 6.2.0
+	* Add hook and hook configuration removed from rtehtmlarea
+	* Adapt wizard configuration
+
 2013-05-26  Stanislas Rolland  <typo3(arobas)sjbr.ca>
 
 	* Adapt to TYPO3 6.0+ namespacing, directory structure, deprecated methods, etc.

@@ -4,7 +4,7 @@ namespace SJBR\LoremIpsum\Controller\Wizard;
 *  Copyright notice
 *
 *  (c) 1999-2004 Kasper Skaarhoj <kasper@typo3.com>
-*  (c) 2013 Stanislas Rolland <typo3@sjbr.ca>
+*  (c) 2013-2014 Stanislas Rolland <typo3@sjbr.ca>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,6 +26,10 @@ namespace SJBR\LoremIpsum\Controller\Wizard;
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /**
  * Lorem Ipsum dummy text wizard
  */
@@ -127,7 +131,7 @@ class LoremIpsumController {
 			}
 
 			// End-sequence
-			$chars = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $endSequence, 1);
+			$chars = GeneralUtility::trimExplode(',', $endSequence, 1);
 			$addJS = '';
 			foreach ($chars as $charVal) {
 				if (intval($charVal) >0 ) {
@@ -153,7 +157,7 @@ class LoremIpsumController {
 				);
 				foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lorem_ipsum']['RTE_insert'] as $_funcRef) {
 					if ($_funcRef) {
-						$code .= \TYPO3\CMS\Core\Utility\GeneralUtility::callUserFunction($_funcRef, $_params, $this);
+						$code .= GeneralUtility::callUserFunction($_funcRef, $_params, $this);
 					}
 				}
 			}
@@ -171,11 +175,11 @@ class LoremIpsumController {
 	protected function getIcon($type, $backPath = '') {
 		switch ($type) {
 			case 'loremipsum':
-				return '<img src="' . $backPath . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('lorem_ipsum') . 'Resources/Public/Images/lorem_ipsum.gif" style="margin-left:2px;margin-top:3px;" title="' . $this->str_loremIpsum . '..." alt="' . $this->str_loremIpsum . '..." />';
+				return '<img src="' . $backPath . ExtensionManagementUtility::extRelPath('lorem_ipsum') . 'Resources/Public/Images/lorem_ipsum.gif" style="margin-left:2px;margin-top:3px;" title="' . $this->str_loremIpsum . '..." alt="' . $this->str_loremIpsum . '..." />';
 				break;
 			default:
 				$imageTitle = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('insertDummyContent', 'LoremIpsum');
-				return '<img src="' . $backPath . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('lorem_ipsum') . 'Resources/Public/Images/lipsum.gif" style="margin-left:2px;margin-top:3px;" title="' . $imageTitle . '" alt="' . $imageTitle . '" />';
+				return '<img src="' . $backPath . ExtensionManagementUtility::extRelPath('lorem_ipsum') . 'Resources/Public/Images/lipsum.gif" style="margin-left:2px;margin-top:3px;" title="' . $imageTitle . '" alt="' . $imageTitle . '" />';
 				break;
 		}
 	}
@@ -192,11 +196,11 @@ class LoremIpsumController {
 			$pCounter = 0;
 
 			// Load text
-			$lipsumText = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('lorem_ipsum') . $this->LRfile);
+			$lipsumText = GeneralUtility::getUrl(ExtensionManagementUtility::extPath('lorem_ipsum') . $this->LRfile);
 			$lipsumText = preg_replace('/[' . CR . LF . ']/u', '', $lipsumText);
 
 			// Split into sentencies
-			$this->loremIpsumSource = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode($this->LRSentenceEnd, $lipsumText, 1);
+			$this->loremIpsumSource = GeneralUtility::trimExplode($this->LRSentenceEnd, $lipsumText, 1);
 
 			// Make unique and sort
 			$this->loremIpsumSource = array_unique($this->loremIpsumSource);
@@ -257,5 +261,3 @@ class LoremIpsumController {
 		}
 	}
 }
-
-?>
